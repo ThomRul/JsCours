@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon super timer !</title>
+    <style>
+        body{
+            margin: 0;
+            text-align: center;
+            background-image : url("./img/timePassing.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .timer{
+            background-color: rgba(255, 255, 255, 0.57);
+            color : black;
+            width : 3rem;
+            margin : auto;
+            border-radius : 5px;
+            font-weight : bold;
+            margin-bottom: 1rem;
+        }
+        .controls{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                                    ". timeInput ."
+                                    "start stop reset";
+            gap: 10px;
+            width: 50%;
+            margin: auto;
+        }
+
+        #timeInput{
+            grid-area: timeInput;
+            text-align: center;
+        }
+        #start{
+            grid-area: start;
+        }
+        #stop{
+            grid-area: stop;
+        }
+        #reset{
+            grid-area: reset;
+        }
+        button{
+            cursor: pointer;
+            background-color: #a4b6d0;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            transition: ease-out 0.3s;
+        }
+        button:hover{
+            background-color: rgb(102, 136, 179);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>⏲️</h1>
+<div class="timer" id="timer"></div>
+<div class="controls">
+  <input type="text" id="timeInput" placeholder="temps en secondes !">
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+  <button id="reset">Reset</button>
+</div>
+<script>
+    const timerElement = document.getElementById('timer');
+    const numberInput = document.getElementById('timeInput');
+    const startButton = document.getElementById('start');
+    const stopButton = document.getElementById('stop');
+    const resetButton = document.getElementById('reset');
+    let intervalId;
+    let count;
+
+    startButton.addEventListener(('click'), startTimer)
+
+    stopButton.addEventListener(('click'), stopTimer)
+
+    resetButton.addEventListener(('click'), resetTimer)
+
+    function update(){
+        if(count > 0){
+            timerElement.textContent = count;
+        }else{
+            timerElement.textContent = "0";
+        }
+    }
+
+    function startTimer(){
+        if(intervalId) return;
+        if(!count){
+            count = parseInt(numberInput.value);
+
+        }
+        intervalId = setInterval(() => {
+            if(count > 0){
+                count--;
+                update();
+            }else{
+                stopTimer();
+            }
+
+        }, 1000);
+    }
+
+    function stopTimer(){
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+
+    function resetTimer(){
+        stopTimer()
+        count = parseInt(numberInput.value);
+        update();
+    }
+</script>
+</body>
+</html>

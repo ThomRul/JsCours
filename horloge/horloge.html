@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma super horloge</title>
+    <style>
+        body {
+            margin : 0 auto;
+            text-align : center;
+            background-image : url("./img/font.jpg");
+        }
+        #startHorloge{
+            margin-top : 5rem;
+            margin-bottom : 1rem;
+            border-radius : 5px;
+            background-color : #abb3bf;
+            color : white;
+            font-family : 'Courier New', Courier, monospace;
+            transition : ease-out 0.3s;
+            height : 2rem;
+        }
+        #startHorloge:hover{
+            cursor: pointer;
+            background-color : #a49d9d;
+        }
+        .time{
+            background-color: white;
+            color : black;
+            width : 7rem;
+            margin : auto;
+            border-radius : 5px;
+            background-color : #8f8888;
+            color: white;
+            font-weight : bold;
+
+        }
+    </style>
+</head>
+<body>
+<button id="startHorloge">Lancer l'horloge</button>
+<div class="horloge" id="horloge"></div>
+<script>
+    const horloge=document.getElementById('startHorloge');
+    const divHorloge=document.getElementById('horloge');
+    let intervalId;
+    horloge.addEventListener('click',function(){
+        if(!intervalId){
+            startHorloge();
+        }
+    });
+
+    function startHorloge(){
+        let p = document.createElement('p');
+        p.classList.add("time");
+        p.textContent = new Date().toLocaleString();
+        divHorloge.appendChild(p);
+
+        intervalId = setInterval(() => {
+            p.textContent = new Date().toLocaleString();
+            console.log(intervalId);
+        },1000)
+    }
+</script>
+</body>
+</html>

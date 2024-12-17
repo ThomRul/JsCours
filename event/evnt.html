@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+</head>
+<body>
+<button onclick="handleDemoEvent()"> clic classique baby</button>
+<button id="btn-event">clic moderne</button>
+<!-- focus blur -->
+<div class="input-zone">
+    <input id="inputDemo" type="text" placeholder="focus / blur demo">
+    <div id="focusStatus"> En attente de focus ! </div>
+</div>
+<div class="input-zone">
+    <input id="keyDemo" type="text" placeholder="tapez quelque chose">
+    <div id="keyStatus"> En attente de frappe ... </div>
+</div>
+<script>
+    //déclaration des variable
+    const focusStatus = document.getElementById("focusStatus");
+    const inputDemo = document.getElementById("inputDemo");
+    const btnEvent = document.getElementById("btn-event");
+    const keyDemo = document.getElementById("keyDemo");
+    const keyStatus = document.getElementById("keyStatus");
+
+    //keydown keyup
+    keyDemo.addEventListener("keydown", (event) => {
+        keyStatus.textContent = `touchée pressée ${event.key}`;
+    });
+    keyDemo.addEventListener("keyup", (event) => {
+        keyStatus.textContent = `dernière touche relachée ${event.key}`;
+    })
+
+    // focus blur
+    inputDemo.addEventListener("focus", () => {
+        focusStatus.textContent = "Focus !";
+    });
+    inputDemo.addEventListener("blur", () => {
+        focusStatus.textContent = "Input a perdu le focus !!";
+    });
+    //fonction
+  function handleDemoEvent() {
+      console.log("click via HTML onclic");
+  }
+  //event listener
+  btnEvent.addEventListener('click', (event) => {
+      console.log("Variable event : " + event);
+      console.log("Type : " + event.type);
+      console.log("Target : " + event.target);
+  },{
+      once : true
+      }
+  );
+
+  window.addEventListener('load', () => {
+      console.error("Page a été entièrement chargée !! ");
+  });
+</script>
+</body>
+</html>
