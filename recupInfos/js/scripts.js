@@ -21,7 +21,7 @@ const h1 = document.getElementById("title");
 setTimeout( () => {
     h1.textContent = "⏲️";
 },5000);
-
+console.log("hello");
 let age = "Hello";
 
 btn.addEventListener('click', () => {
