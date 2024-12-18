@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel TrivaGogo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("./img/hotelAustin.JPG");
+      background-size: cover;
+      color: white;
+      padding: 20px;
+    }
+
+    #reservationForm {
+      background-color: rgba(0, 0, 0, 0.7);
+      margin-top : 15.5rem;
+      padding: 20px;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .error {
+      color: #ff6b6b;
+      font-size: 14px;
+      display: none;
+    }
+
+    #btn-submit {
+      background-color: #ef0d0d;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #btn-submit:hover {
+      background-color: #FFA500;
+    }
+  </style>
+</head>
+<body>
+<form id="reservationForm">
+  <div class="form-group">
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" required>
+    <div class="error" id="nomError">Le nom doit contenir entre 3 et 20 caractères</div>
+  </div>
+
+  <div class="form-group">
+    <label for="prenom">Prénom:</label>
+    <input type="text" id="prenom" required>
+    <div class="error" id="prenomError">Le prénom doit contenir entre 3 et 20 caractères</div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <div class="error" id="emailError">Email invalide</div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date de réservation:</label>
+    <input type="date" id="date" required>
+    <div class="error" id="dateError">Date invalide</div>
+  </div>
+
+  <div class="form-group">
+    <label for="personnes">Nombre de personnes:</label>
+    <input type="number" id="personnes" min="1" required>
+    <div class="error" id="personnesError">Nombre de personnes invalide</div>
+  </div>
+
+  <button type="submit" id="btn-submit">🛎️</button>
+</form>
+<script type="module" src="./scripts/scripts.js"></script>
+</body>
+</html>

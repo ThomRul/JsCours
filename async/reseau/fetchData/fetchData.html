@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style>
+        .user-card{
+            border: 1px solid rgba(242, 53, 210, 0.9);
+            border-radius: 5px;
+            margin : 2rem;
+            width: 30%;
+            text-align: center;
+            background-color: rgb(207, 152, 216);
+            color : white;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div id="userList"></div>
+<script>
+    async function getUsers(){
+        try{
+            const reponse = await fetch('https://jsonplaceholder.typicode.com/users');
+            const users = await reponse.json();
+            console.log(users);
+            const[{name,email,phone,website,company}] = users;
+            console.log(name);
+            console.log(email);
+            console.log(phone);
+            console.log(website);
+            console.log(company);
+
+            const userList = document.getElementById('userList');
+            users.forEach((user) => {
+                const userCard = document.createElement('div');
+                userCard.className = "user-card";
+                let h2 = document.createElement('h2');
+                let pEmail = document.createElement('p');
+                let pTel = document.createElement('p');
+                let pWebsite = document.createElement('p');
+                let pEntreprise = document.createElement('p');
+                h2.textContent = user.name;
+                pEmail.textContent = user.email;
+                pTel.textContent = user.phone;
+                pWebsite.textContent = user.website;
+                pEntreprise.textContent = user.company.name;
+                userCard.append(h2, pEmail, pTel, pWebsite, pEntreprise);
+                userList.append(userCard);
+            })
+
+        }catch(e){
+            console.log(e);
+        }
+    }
+    getUsers();
+</script>
+</body>
+</html>
