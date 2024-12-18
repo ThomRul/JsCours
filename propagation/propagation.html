@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>propagation</title>
+    <style>
+        div{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<span>
+    <div></div>
+</span>
+<script>
+    const div = document.querySelector('div');
+    const span = document.querySelector('span');
+    div.addEventListener('click', () => {
+        console.log("click sur la div");
+    },{
+        capture: true
+    });
+    span.addEventListener('click', () => {
+        console.log("click sur le span");
+    },{
+        capture: true
+        }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Loop</title>
+</head>
+<body>
+<script>
+    console.log("start");
+    setTimeout(() => {
+        console.log("timeout 2sec");
+    },2000);
+    const promesse = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        },4000)
+    });
+    promesse.then((result) => {
+        console.log("promesse après 4 secondes");
+    });
+    Promise.resolve().then((result) => {
+      console.log("promesse 0");
+    });
+    setTimeout(() => {
+        console.log("timeout 0secondes");
+    },0);
+    console.log("end 😎");
+
+</script>
+</body>
+</html>

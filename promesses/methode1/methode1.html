@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise all</title>
+</head>
+<body>
+<script>
+  const promesse1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("1");
+    },1000)
+  })
+  const promesse2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("2");
+    },2000)
+  })
+  const promesse3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("3");
+    },3000)
+  })
+
+  /*
+  * Promise all
+  * il va prendre en paramètre un tableau de promesses -> retourner une nouvelle promesse
+  * son principe -> il va attendre que toutes les promesses soient résolues (et terminée)
+  * si jamais une seule des promesse n'est résolue on ira jamais dans son then()
+  * ***/
+  Promise.all([promesse1, promesse2, promesse3]).then((result) => {console.log(result)}).catch((error) => {console.log(error)});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>all settled</title>
+</head>
+<body>
+<script>
+  const promesse1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("1");
+    },1000)
+  })
+  const promesse2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("2");
+    },2000)
+  })
+  const promesse3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject("3");
+    },500)
+  })
+
+  /*
+  * promise.race -> il va traiter la première qui est résolue -> il va ignorer le reste
+  * son alternative -> any -> si jamais j'ai une promesse qui échoue... C'est pas grave, il va attendre qu'une promesse soit résolue
+  * **/
+  Promise.race([promesse1, promesse2, promesse3]).then((result) => {console.log(result)}).catch((error) => {console.log(error)});
+
+</script>
+</body>
+</html>

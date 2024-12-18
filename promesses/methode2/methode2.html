@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>all settled</title>
+</head>
+<body>
+<script>
+  const promesse1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("1");
+    },1000)
+  })
+  const promesse2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject("2");
+    },2000)
+  })
+  const promesse3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("3");
+    },3000)
+  })
+
+  /*
+  * all settled -> c'est dans le cas on veut voir toutes les promesses et
+  * si jamais il y a une promesse qui n'est pas resolve -> on veut quand même récupérer le résultat des autres promesses
+  * **/
+  Promise.allSettled([promesse1, promesse2, promesse3]).then((result) => {console.log(result)}).catch((error) => {console.log(error)});
+
+</script>
+</body>
+</html>

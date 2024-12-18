@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chainage 2</title>
+</head>
+<body>
+<script>
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("ok");
+    },2000)
+  });
+
+  promise.then((result) => {
+    console.log("then : ", result);
+    throw new Error("erreur !! 💣");
+  }).then((result) => {
+    console.log("then chainé : ", result);
+  }).catch((error) => {
+    console.log("catch : ",error);
+  });
+
+  // mon catch ici n'est pas chaîné
+  promise.catch((error) => {
+    console.log("catch 2 : ",error);
+  });
+</script>
+</body>
+</html>

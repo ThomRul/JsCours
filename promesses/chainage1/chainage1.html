@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chainage</title>
+</head>
+<body>
+<script>
+  /**
+   * Comment on pourrait enchainer les then()
+   * ***/
+
+  const promesse = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("ok ! 😎")
+    },3000)
+  });
+  promesse.then((result)=>{
+    console.log("then : ", result);
+    return "un truc";
+  }).then((result)=>{
+    console.log("then chainé : ", result);
+  });
+
+  //si jamais je viens faire ça
+  /**
+   * le then() va juste se déclencher sur la promesse initiale ! c'est pas du chainage !
+   * **/
+  promesse.then((result)=>{
+    console.log("then deux : ", result);
+  });
+</script>
+</body>
+</html>

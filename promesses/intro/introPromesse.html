@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>intro</title>
+</head>
+<body>
+<script>
+    /**
+     * Js = monothread et synchrone
+     * En gros il "lit" le code de haut en bas...
+     * L'objet Promesse est là pour répondre à la problématique de l'interpreteur js qui
+     * pourrait être "bloqué"
+     * ***/
+    const promesse = new Promise((resolve, reject) =>{
+        resolve("promesse OK ! ");
+    })
+    console.log(promesse);
+    promesse.then((result) => {
+        console.log(result);
+    });
+
+    // exactement la même chose dans le cas ou une promesse est rejetée...
+    const promesseError = new Promise((resolve, reject) => {
+        reject("erreur dans la promesse");
+    });
+    console.log(promesseError);
+    promesseError.then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
+    });
+</script>
+</body>
+</html>
